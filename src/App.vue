@@ -1,85 +1,64 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-</script>
+<!-- App.vue -->
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+  <div id="app">
+    <Header />
+    <ProductList :products="products" />
+    <Footer />
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
+<script>
+import Header from './components/Header.vue';
+import Footer from './components/Footer.vue';
+import ProductList from './components/ProductList.vue';
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+export default {
+  name: 'App',
+  components: {
+    Header,
+    Footer,
+    ProductList
+  },
+  data() {
+    return {
+      products: [
+        { 
+          id: 1, 
+          name: 'Whole Lotta Red', 
+          description: 'Eine Schallplatte für jedes alter geignet', 
+          price: '14', 
+          rating: 4,
+          image: '1.png'
+        },
+        {
+          id: 2, 
+          name: 'C4', 
+          description: 'Ein produkt, wenn man sich den tag verschönern will', 
+          price: '50', 
+          rating: 3,
+          image: '2.png'
+        },
+        {
+          id: 3, 
+          name: 'Lego Ninjago 9441 Kais Feuer-Bike', 
+          description: 'Für 2000er kinder', 
+          price: '12', 
+          rating: 4,
+          image: '3.png' // Updated image name
+        }
+      ]
+    };
   }
+};
+</script>
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
+<style>
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+body {
+  background-color: #ff0000; 
+  color: #fff; 
 }
+
+
 </style>
